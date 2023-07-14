@@ -7,7 +7,7 @@ const cats = [
   },
   {
     name: "Mao",
-    bio: "Mao is is a Cantonese word.",
+    bio: "Mao is a Cantonese word.",
     thumb: "images/kitten2-thumb.jpeg",
     img: "images/kitten2.jpeg"
   },
@@ -68,4 +68,15 @@ for (const cat of cats) {
 
     //Add the card to the cats row
     catsRow.insertAdjacentHTML("beforeend", card)
+}
+
+// adding event listener to the row
+catsRow.addEventListener("click", openModal)
+
+function openModal(e) {
+// delegate the event to the target element if it contains class card-img-top
+  if(e.target.classList.contains("card-img-top")) {
+    const fullSizeImage = e.target.dataset.fullimg //data-fullimg change to dataset.fullimg
+    document.querySelector(".modal-body").innerHTML = `<img src="${fullSizeImage}" alt="placeholder kitten">`
+  }
 }
