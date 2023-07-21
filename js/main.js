@@ -59,10 +59,11 @@ for (const cat of cats) {
      <div class="card">
         <img data-bs-toggle="modal" data-bs-target="#exampleModal" src="${cat.thumb}" data-fullimg="${cat.img}" class="card-img-top" alt="placeholder kitten"><!--bring data-bs-toggle & data-bs-target to enlarge the image-->
         <div class="card-body">
-        <h5 class="card-title">${cat.name}</h5>
+          <h5 class="card-title">${cat.name}</h5>
           <p class="card-text">${cat.bio}</p>
           <a href="#" class="btn btn-light like" data-catname="${cat.name}" data-catbio="${cat.bio}" data-catthumb="${cat.thumb}" data-catfullimg="${cat.img}">Like</a><!--after data-xx can be named anything-->
-     </div><!--card end-->
+        </div>  
+      </div><!--card end-->
     </div><!--col end-->`
 
     //Add the card to the cats row
@@ -165,5 +166,29 @@ function findCat(catName) {
   return null
 }
 // liked Cats page
+//display cats from localStorage
 
-//
+const likedCatsRow = document.getElementById("likedCatsRow")
+
+if(likedCatsRow) {
+  // if savedCats array contains one or more cats then display the cats 
+  if(savedCats.length > 0) {
+    const likedCards = []
+    for (savedCat of savedCats) {
+      const card = `
+      <div class="col">
+       <div class="card">
+          <img data-bs-toggle="modal" data-bs-target="#exampleModal" src="${cat.thumb}" data-fullimg="${cat.img}" class="card-img-top" alt="placeholder kitten"><!--bring data-bs-toggle & data-bs-target to enlarge the image-->
+          <div class="card-body">
+            <h5 class="card-title">${cat.name}</h5>
+            <p class="card-text">${cat.bio}</p>
+            <a href="#" class="btn btn-light remove" data-catname="${cat.name}">Remove</a><!--after data-xx can be named anything-->
+          </div>  
+        </div><!--card end-->
+      </div><!--col end-->`
+    }
+  } else {
+    // display message that no cats were found
+
+  }
+}
