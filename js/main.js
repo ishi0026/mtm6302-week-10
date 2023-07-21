@@ -109,6 +109,15 @@ const likeButtons = document.querySelectorAll(".like")
 if (likeButtons.length > 0) {
   for (const likeButton of likeButtons) {
     likeButton.addEventListener("click", likeCat)
+    //loop over the savedCats array and check if any catName with this button cat name
+    for (savedCat of savedCats){
+      if(savedCat.name == likeButton.dataset.catName) {
+        //update button style - applying this style every time we refresh the browser
+        this.classList.remove("btn-light")
+        this.classList.add("btn-danger")
+        this.textContent = "Liked"
+      }
+    }
   }
 }
 
@@ -138,6 +147,10 @@ function likeCat(e) {
     // stringify the saveCats array and add it to localStorage mycats
     localStorage.setItem("mycats", JSON.stringify(savedCats))
 
+    // update button applying style to local storage
+    this.classList.remove("btn-light")
+    this.classList.add("btn-danger")
+    this.textContent = "Liked"
   }
 
 }
