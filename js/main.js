@@ -91,6 +91,8 @@ function openModal(e) {
 // 2.find the cat info
 // 3.update button style
 // 4.save the cat info to local storage
+// remove the cat info LS
+// update the UI
 
 // ============================
 
@@ -174,7 +176,7 @@ if(likedCatsRow) {
   // if savedCats array contains one or more cats then display the cats 
   if(savedCats.length > 0) {
     const likedCards = []
-    for (savedCat of savedCats) {
+    for (cat of savedCats) {
       const card = `
       <div class="col">
        <div class="card">
@@ -183,10 +185,12 @@ if(likedCatsRow) {
             <h5 class="card-title">${cat.name}</h5>
             <p class="card-text">${cat.bio}</p>
             <a href="#" class="btn btn-light remove" data-catname="${cat.name}">Remove</a><!--after data-xx can be named anything-->
-          </div>  
+          </div><!--card-body end-->
         </div><!--card end-->
       </div><!--col end-->`
+      likedCards.push(card)
     }
+    likedCatsRow.innerHTML = likedCards.join("") // use "innerHTML =" not to overwrite
   } else {
     // display message that no cats were found
 
