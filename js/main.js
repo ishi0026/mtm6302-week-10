@@ -92,6 +92,18 @@ function openModal(e) {
 
 // ============================
 
+//get the savedCats from local storage
+let savedCats = localStorage.getItem("mycats")
+
+//if the saved Cats are null then savedCats will be true 
+  if (!savedCats) {
+    //set savedCats to empty array
+    savedCats = []
+  } else {
+    // is savedCats is not null until then set savedCats to parsed value of savedCats
+    savedCats = JSON.parse(savedCats)
+  }
+
 // click event on like button
 const likeButtons = document.querySelectorAll(".like")
 if (likeButtons.length > 0) {
@@ -109,6 +121,14 @@ function likeCat(e) {
   const catInfo = {name: catName, bio: catBio, thumb: catThumb, img: catImg}
   console.log(catInfo)
 
-  let savedCats = localStorage.getItem("mycats")
+  const catExist = findCat(catName)
+}
 
+function findCat(catName) {
+  for(savedCat of savedCats){
+    if(savedCat.name == catName){
+      return savedCats.indexOf(savedCat) // return the number of order  
+    }
+  }
+  return null
 }
