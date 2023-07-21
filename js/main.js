@@ -92,7 +92,7 @@ function openModal(e) {
 // 3.update button style
 // 4.save the cat info to local storage
 // remove the cat info LS
-// update the UI
+// update the UI without refresh browser
 
 // ============================
 
@@ -173,6 +173,9 @@ function findCat(catName) {
 const likedCatsRow = document.getElementById("likedCatsRow")
 
 if(likedCatsRow) {
+  showCats()
+  function showCats() {
+
   // if savedCats array contains one or more cats then display the cats 
   if(savedCats.length > 0) {
     const likedCards = []
@@ -193,6 +196,26 @@ if(likedCatsRow) {
     likedCatsRow.innerHTML = likedCards.join("") // use "innerHTML =" not to overwrite
   } else {
     // display message that no cats were found
-
+    likedCatsRow.innerHTML = "No liked cats to show!" 
   }
+}
+
+  // add event delegation for remove button
+    likedCatsRow.addEventListener('click', removeCat)
+
+    function removeCat(e){
+      // check if target is the remove button
+      if(e.target.classList.contains("remove")){
+        e.preventDefault()
+        // get the index of cat to remove from the saveCats array using findCat method
+        const removeCatIndex = findCat(e.target.dataset.catname)
+        console.log(removeCatIndex)
+        // remove the cat from saveCats array
+        savedCats.splice(removeCatIndex, 1)
+
+
+        //update the local storage with the array
+        localStorage.setItem("mycats", JSON.stringify(savedCats))
+      }
+   }
 }
