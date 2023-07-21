@@ -59,10 +59,10 @@ for (const cat of cats) {
      <div class="card">
         <img data-bs-toggle="modal" data-bs-target="#exampleModal" src="${cat.thumb}" data-fullimg="${cat.img}" class="card-img-top" alt="placeholder kitten"><!--bring data-bs-toggle & data-bs-target to enlarge the image-->
         <div class="card-body">
-          <h5 class="card-title">${cat.name}</h5>
-          <p class="card-text">${cat.bio}</p>
+        <h5 class="card-title">${cat.name}</h5>
+          <p class="card-text">${cat.bio}</p>          
           <a href="#" class="btn btn-light">Like</a>
-        </div>
+
      </div><!--card end-->
     </div><!--col end-->`
 
@@ -77,6 +77,11 @@ function openModal(e) {
 // delegate the event to the target element if it contains class card-img-top
   if(e.target.classList.contains("card-img-top")) {
     const fullSizeImage = e.target.dataset.fullimg //data-fullimg change to dataset.fullimg
-    document.querySelector(".modal-body").innerHTML = `<img src="${fullSizeImage}" alt="placeholder kitten">`
+    
+    document.querySelector(".modal-body").innerHTML = `
+    <img src="${fullSizeImage}" alt="placeholder kitten">
+    `
   }
 }
+
+
