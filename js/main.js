@@ -50,7 +50,7 @@ const cats = [
 ]
 
 const catsRow = document.getElementById("catsRow")
-
+if(catsRow){
 // loop over the array of data
 for (const cat of cats) {
   console.log(cat.name)
@@ -74,12 +74,13 @@ catsRow.addEventListener("click", openModal)
 
 function openModal(e) {
 // delegate the event to the target element if it contains class card-img-top
-  if(e.target.classList.contains("card-img-top")) {
-    const fullSizeImage = e.target.dataset.fullimg //data-fullimg change to dataset.fullimg
-    
-    document.querySelector(".modal-body").innerHTML = `
-    <img src="${fullSizeImage}" alt="placeholder kitten">
-    `
+    if(e.target.classList.contains("card-img-top")) {
+      const fullSizeImage = e.target.dataset.fullimg //data-fullimg change to dataset.fullimg
+      
+      document.querySelector(".modal-body").innerHTML = `
+      <img src="${fullSizeImage}" alt="placeholder kitten">
+      `
+    }
   }
 }
 
@@ -163,3 +164,6 @@ function findCat(catName) {
   }
   return null
 }
+// liked Cats page
+
+//
