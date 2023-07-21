@@ -60,9 +60,8 @@ for (const cat of cats) {
         <img data-bs-toggle="modal" data-bs-target="#exampleModal" src="${cat.thumb}" data-fullimg="${cat.img}" class="card-img-top" alt="placeholder kitten"><!--bring data-bs-toggle & data-bs-target to enlarge the image-->
         <div class="card-body">
         <h5 class="card-title">${cat.name}</h5>
-          <p class="card-text">${cat.bio}</p>          
-          <a href="#" class="btn btn-light">Like</a>
-
+          <p class="card-text">${cat.bio}</p>
+          <a href="#" class="btn btn-light like" data-catname="${cat.name}" data-catbio="${cat.bio}" data-catthumb="${cat.thumb}" data-catfullimg="${cat.img}">Like</a><!--after data- can be anything-->
      </div><!--card end-->
     </div><!--col end-->`
 
@@ -84,4 +83,24 @@ function openModal(e) {
   }
 }
 
+// ============================
+// week 11
+// ============================
 
+// click event on like button
+const likeButtons = document.querySelectorAll(".like")
+if (likeButtons.length > 0) {
+  for (const likeButton of likeButtons) {
+    likeButton.addEventListener("click", likeCat)
+  }
+}
+
+function likeCat(e) {
+  e.preventDefault() //cancel the default event 
+  const catName = this.dataset.catname
+  const catBio = this.dataset.catbio
+  const catThumb = this.dataset.catthumb
+  const catImg = this.dataset.catfullImg
+  const catInfo = {name: catName, bio: catBio, thumb: catThumb, img: catImg}
+    
+}
