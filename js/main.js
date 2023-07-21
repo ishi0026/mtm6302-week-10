@@ -61,7 +61,7 @@ for (const cat of cats) {
         <div class="card-body">
         <h5 class="card-title">${cat.name}</h5>
           <p class="card-text">${cat.bio}</p>
-          <a href="#" class="btn btn-light like" data-catname="${cat.name}" data-catbio="${cat.bio}" data-catthumb="${cat.thumb}" data-catfullimg="${cat.img}">Like</a><!--after data- can be anything-->
+          <a href="#" class="btn btn-light like" data-catname="${cat.name}" data-catbio="${cat.bio}" data-catthumb="${cat.thumb}" data-catfullimg="${cat.img}">Like</a><!--after data-xx can be named anything-->
      </div><!--card end-->
     </div><!--col end-->`
 
@@ -83,8 +83,13 @@ function openModal(e) {
   }
 }
 
-// ============================
-// week 11
+//  ============================
+// week11
+// 1.click the event on like likeButtons
+// 2.find the cat info
+// 3.update button style
+// 4.save the cat info to local storage
+
 // ============================
 
 // click event on like button
@@ -100,7 +105,10 @@ function likeCat(e) {
   const catName = this.dataset.catname
   const catBio = this.dataset.catbio
   const catThumb = this.dataset.catthumb
-  const catImg = this.dataset.catfullImg
+  const catImg = this.dataset.catfullimg
   const catInfo = {name: catName, bio: catBio, thumb: catThumb, img: catImg}
-    
+  console.log(catInfo)
+
+  let savedCats = localStorage.getItem("mycats")
+
 }
